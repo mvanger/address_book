@@ -8,7 +8,13 @@ require 'pry'
 require 'sinatra'
 require 'sinatra/reloader' if development?
 
-puts "Hey gurl"
+# puts "Hey gurl"
+
+get '/' do
+  erb :index
+end
+
+
 
 # get all the inputs
 # put them in the string
