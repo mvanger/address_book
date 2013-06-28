@@ -9,5 +9,8 @@
 </form>
 
 <% @contacts.each do |contact| %>
-  <%= contact %><br>
+  <%= contact["first"] %>
+  <%= contact["last"] %>
+  <%= contact["age"] %>
+  <%= contact["phone"] %><br>
 <% end %>
