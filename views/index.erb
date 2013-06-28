@@ -6,11 +6,15 @@
   <p>Age: <input type="text" name="age" autofocus></p>
   <p>Phone Number: <input type="text" name="phone" autofocus></p>
   <button>Submit</button>
-</form>
+</form><br>
 
-<% @contacts.each do |contact| %>
-  <%= contact["first"] %>
-  <%= contact["last"] %>
-  <%= contact["age"] %>
-  <%= contact["phone"] %><br>
+<h3>Current Directory</h3>
+<h4>Name, Age, Phone Number</h4>
+<% if @contacts %>
+  <% @contacts.each do |contact| %>
+    <p><%= contact["first"] %>
+    <%= contact["last"] %>,
+    <%= contact["age"] %>,
+    <%= contact["phone"] %></p>
+  <% end %>
 <% end %>
