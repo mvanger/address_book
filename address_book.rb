@@ -14,6 +14,13 @@ get '/' do
   erb :index
 end
 
+post '/' do
+  @first = params[:first]
+  @last = params[:last]
+  @age = params[:age]
+  @phone = params[:phone]
+  erb :index
+end
 
 
 # get all the inputs
@@ -30,8 +37,8 @@ end
 db = PG.connect(:dbname => 'address_book',
   :host => 'localhost')
 
-puts "what's your name girl?"
-name = gets.chomp
+# puts "what's your name girl?"
+# name = gets.chomp
 sql = "insert into contacts (first) values ('#{name}')"
 db.exec(sql)
 sql = "select first, age from contacts"
