@@ -4,6 +4,8 @@
 # list people
 require 'pg'
 require 'pry'
+require 'sinatra'
+require 'sinatra/reloader' if development?
 
 puts "Hey gurl"
 
