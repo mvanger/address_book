@@ -2,6 +2,7 @@
 # create an input form
 # add a person
 # list people
+require 'rubygems'
 require 'pg'
 require 'pry'
 require 'sinatra'
