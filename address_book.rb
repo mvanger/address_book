@@ -11,6 +11,16 @@ require 'sinatra/reloader' if development?
 # puts "Hey gurl"
 
 get '/' do
+  @contacts = []
+  db = PG.connect(:dbname => 'address_book',
+    :host => 'localhost')
+  sql = "select first, last, age, phone from contacts"
+    db.exec(sql) do |result|
+      result.each do |row|
+         @contacts << row
+      end
+    end
+  db.close
   erb :index
 end
 
@@ -20,7 +30,6 @@ post '/' do
   @age = params[:age]
   @phone = params[:phone]
   erb :index
-end
 
 
 # get all the inputs
@@ -39,17 +48,13 @@ db = PG.connect(:dbname => 'address_book',
 
 # puts "what's your name girl?"
 # name = gets.chomp
-sql = "insert into contacts (first) values ('#{name}')"
+sql = "insert into contacts (first, last, age, phone) values ('#{@first}','#{@last}',#{@age},'#{@phone}')"
 db.exec(sql)
-sql = "select first, age from contacts"
-db.exec(sql) do |result|
-  result.each do |row|
-    puts row
-  end
-end
+
+
 # db.close
 db.close
-
+end
 # reads from database
 # db = PG.connect(:dbname => 'address_book',
 #   :host => 'localhost')
